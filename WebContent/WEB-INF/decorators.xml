@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!-- /WebContent/WEB-INF/decorators.xml -->
+<decorators defaultdir="/decorator">
+	<decorator name="main" page="decorator.jsp">
+		<pattern>/*.cj</pattern>
+		<pattern>/model/member/*.cj</pattern>
+		<pattern>/model/board/*.cj</pattern>
+	</decorator>
+	<excludes>
+		<pattern>/model/member/memberimg*</pattern>
+		<pattern>/model/board/portload.*</pattern>
+		<pattern>/model/board/replyView.*</pattern>
+    </excludes>
+</decorators>

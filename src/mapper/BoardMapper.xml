@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  /src/mapper/MemberMapper.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BoardMapper">
+<!-- 	<select id="PortBoardCount" resultType="int">
+		select count(*) from portfolioboard
+		<if test="column != null and find != null">
+			where ${column} like '%${find}%'
+		</if>
+	</select> -->
+	<select id="portselect" resultType="PortBoard" parameterType="map">
+		select * from portfolioboard where 1=1
+ 		<if test="num != null">
+			and no=#{num}
+		</if>
+			order by regdate desc
+		<if test="count!=null and limit!=null">
+			limit #{count},#{limit}
+		</if>
+	</select>
+	
+	<select id="businesscardSelect" resultType="BusinessCard" >
+		select * from businesscard where 1=1 order by senddate desc
+	</select>
+	
+	<select id="guestselect" resultType="GuestBook" parameterType="map">
+		select * from guestbook where 1=1
+		order by regdate desc
+		<if test="count!=null and limit!=null">
+			limit #{count},#{limit}
+		</if>
+	</select>
+	
+	<select id="guestreplyselect" resultType="GuestReply" parameterType="map">
+		select * from guestreply where 1=1
+		and ref_no = #{ref_no}
+		order by ref asc, refstep desc 
+	</select>
+	
+	<select id="businessselect" resultType="BusinessCard">
+		select * from businesscard where email = #{email}
+	</select>
+</mapper>
